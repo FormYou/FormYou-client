@@ -11,7 +11,9 @@ const Navbar = () => {
           </Link>
         </div>
       <div className="Navbar__right">
-         <p className="Navbar__right__subscribe">S'inscrire</p>
+        <Link to="/signin">
+         <p className="Navbar__right__subscribe">Se connecter</p>
+        </Link>
       </div>
     </nav>
   );
