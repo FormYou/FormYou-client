@@ -1,29 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Navbar from 'components/Navbar/Navbar';
-import Home from 'pages/Home/Home';
-import SignIn from 'pages/SignIn/SignIn';
-import SignUp from 'pages/SignUp/SignUp';
-import './index.scss';
+import App from './App';
 
-const Index = () => (
-  <Router>
-	  <Navbar />
-	  <main>
-		  <Switch>
-			  <Route path="/" exact>
-			  	<Home />
-			  </Route>
-			  <Route path="/signin" exact>
-			  	<SignIn />
-			  </Route>
-			  <Route path="/signup" exact>
-			  	<SignUp />
-			  </Route>
-		  </Switch>
-	  </main>
-  </Router>
+import { createStore } from 'redux';
+import allReducers from 'reducers';
+import { Provider } from 'react-redux';
+
+const store = createStore(
+    allReducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ );
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+  document.getElementById('root')
 );
-
-ReactDOM.render(<Index />, document.getElementById('root'));
