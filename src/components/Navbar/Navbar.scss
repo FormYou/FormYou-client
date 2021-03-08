@@ -1,0 +1,9 @@
+@import 'index.scss';
+
+.Navbar {
+  background: $color-bg;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

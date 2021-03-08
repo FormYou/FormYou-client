@@ -1,0 +1,15 @@
+$color-bg: #A8A8A8;
+
+@font-face {
+  font-family: 'Halibut';
+  src: local('MyFont'), url(./fonts/HalibutSerif-Regular.woff2) format('woff2');
+}
+
+* {
+  margin: 0;
+  font-family: 'Halibut';
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
