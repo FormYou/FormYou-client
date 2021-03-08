@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './index.scss';
 
@@ -6,6 +6,7 @@ import Navbar from 'components/Navbar/Navbar';
 import Home from 'pages/Home/Home';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
+import NoMatch from 'pages/NoMatch/NoMatch';
 
 const App = () => {
 
@@ -34,11 +35,12 @@ const App = () => {
                     <Home />
                 </Route>
                 <Route path="/signin" exact>
-                    <SignIn />s
+                    <SignIn />
                 </Route>
                 <Route path="/signup" exact>
                     <SignUp />
                 </Route>
+                <Route component={NoMatch}/>
             </Switch>
         </main>
     </Router>
