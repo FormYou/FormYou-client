@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from 'components/Navbar/Navbar';
-import Home from 'components/Home/Home';
+import Home from 'pages/Home/Home';
 import './index.scss';
 
 const Index = () => (
