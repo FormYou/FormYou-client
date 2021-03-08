@@ -1,23 +1,26 @@
 import './SignIn.scss';
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
+import { api } from 'data/api.json';
 
 const SignIn = () => {
     const [displayError, setDisplayError] = useState('');
     const { register, handleSubmit, watch, errors } = useForm();
+    const history = useHistory();
 
     const signin = data => {
-        fetch(`http://127.0.0.1:3000/api/login`, {
+        fetch(`${api}login`, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(data)
+          body: JSON.stringify({user: data})
         })
         .then((response) => response.json())
         .then((response) => {
             console.log(response);
-            // history.push("/");
+            history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
     }
