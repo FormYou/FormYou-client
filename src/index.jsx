@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from 'components/Navbar/Navbar';
+import Home from 'components/Home/Home';
 import './index.scss';
 
 const Index = () => (
   <Router>
-  <Navbar />
-  <main>
-    <h1>Hello !</h1>
-  </main>
+	  <Navbar />
+	  <main>
+		  <Switch>
+			  <Route path="/" exact>
+			  	<Home />
+			  </Route>
+		  </Switch>
+	  </main>
   </Router>
 );
 
