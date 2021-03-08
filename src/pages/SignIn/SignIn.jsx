@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import { api } from 'data/api.json';
 import { Link } from 'react-router-dom';
+import Form from "components/Form/Form";
+import Input from "components/Input/Input";
 
 const SignIn = () => {
     const [displayError, setDisplayError] = useState('');
@@ -29,11 +31,11 @@ const SignIn = () => {
   return (
     <div className="SignIn">
         <h1 className="SignIn__title">Se connecter</h1>
-        <form className="SignIn__form" onSubmit={handleSubmit(signin)}>
-          <input className="SignIn__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
-          <input className="SignIn__form__password" name="password" type="password" placeholder="mot de passe" ref={register({ required: true })} />
-          <input className="SignIn__form__submit" type="submit" value="connection"/>
-        </form>
+        <Form className="SignIn__form" onSubmit={signin}>
+          <Input className="SignIn__form__email" name="email" placeholder="email" />
+          <Input className="SignIn__form__password" name="password" placeholder="mot de passe" />
+          <Input className="SignIn__form__submit" type="submit" value="connexion" />
+        </Form>
         <Link to="/signup">
          <p className="Navbar__right__subscribe">S'enregistrer</p>
         </Link>

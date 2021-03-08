@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import { api } from 'data/api.json';
+import Form from "components/Form/Form";
+import Select from "components/Select/Select";
+import Input from "components/Input/Input";
 
 const SignUp = () => {
     const [displayError, setDisplayError] = useState('');
@@ -19,7 +22,7 @@ const SignUp = () => {
         })
         .then((response) => response.json())
         .then((response) => {
-            console.log(response)
+            console.log(response);
             history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
@@ -28,13 +31,14 @@ const SignUp = () => {
   return (
     <div className="SignUp">
         <h1 className="SignUp__title">S'enregistrer</h1>
-        <form className="SignUp__form" onSubmit={handleSubmit(signup)}>
-          <input className="SignUp__form__name" name="name" type="name" placeholder="nom" ref={register({ required: true })} />
-          <input className="SignUp__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
-          <input className="SignUp__form__password" name="password" type="password" placeholder="mot de passe" ref={register({ required: true })} />
-          <input className="SignUp__form__password" name="password_confirmation" type="password" placeholder="confirmation de mdp" ref={register({ required: true })} />
-          <input className="SignUp__form__submit" type="submit" value="enregistrement"/>
-        </form>
+        <Form className="SignIn__form" onSubmit={signup}>
+          <Select className="SignUp__form__select" name="role" options={["étudiant", "professeur", "admin"]} />
+          <Input className="SignUp__form__name" name="name" placeholder="nom" />
+          <Input className="SignUp__form__email" name="email" type="email" placeholder="email" />
+          <Input className="SignUp__form__password" name="password" type="password" placeholder="mot de passe" />
+          <Input className="SignUp__form__password" name="password" type="password" placeholder="confirmation de mdp" />
+          <Input className="SignUp__form__submit" type="submit" value="connexion" />
+        </Form>
     </div>
   );
 };
