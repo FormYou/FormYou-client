@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
 import { api } from 'data/api.json';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
     const [displayError, setDisplayError] = useState('');
@@ -30,9 +31,12 @@ const SignIn = () => {
         <h1 className="SignIn__title">Se connecter</h1>
         <form className="SignIn__form" onSubmit={handleSubmit(signin)}>
           <input className="SignIn__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
-          <input className="SignIn__form__password" name="password" type="password" placeholder="password" ref={register({ required: true })} />
+          <input className="SignIn__form__password" name="password" type="password" placeholder="mot de passe" ref={register({ required: true })} />
           <input className="SignIn__form__submit" type="submit" value="connection"/>
         </form>
+        <Link to="/signup">
+         <p className="Navbar__right__subscribe">S'enregistrer</p>
+        </Link>
     </div>
   );
 };

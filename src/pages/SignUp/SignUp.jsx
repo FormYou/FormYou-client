@@ -29,11 +29,11 @@ const SignUp = () => {
     <div className="SignUp">
         <h1 className="SignUp__title">S'enregistrer</h1>
         <form className="SignUp__form" onSubmit={handleSubmit(signup)}>
-          <input className="SignUp__form__name" name="name" type="name" placeholder="name" ref={register({ required: true })} />
+          <input className="SignUp__form__name" name="name" type="name" placeholder="nom" ref={register({ required: true })} />
           <input className="SignUp__form__email" name="email" type="email" placeholder="email" ref={register({ required: true })} />
-          <input className="SignUp__form__password" name="password" type="password" placeholder="password" ref={register({ required: true })} />
-          <input className="SignUp__form__password" name="password_confirmation" type="password" placeholder="password_confirmation" ref={register({ required: true })} />
-          <input className="SignUp__form__submit" type="submit" value="connection"/>
+          <input className="SignUp__form__password" name="password" type="password" placeholder="mot de passe" ref={register({ required: true })} />
+          <input className="SignUp__form__password" name="password_confirmation" type="password" placeholder="confirmation de mdp" ref={register({ required: true })} />
+          <input className="SignUp__form__submit" type="submit" value="enregistrement"/>
         </form>
     </div>
   );

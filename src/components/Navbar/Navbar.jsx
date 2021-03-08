@@ -12,10 +12,7 @@ const Navbar = () => {
         </div>
       <div className="Navbar__right">
         <Link to="/signin">
-         <p className="Navbar__right__subscribe">Se connecter</p>
-        </Link>
-        <Link to="/signup">
-         <p className="Navbar__right__subscribe">S'enregistrer</p>
+         <p className="Navbar__right__subscribe">Connection</p>
         </Link>
       </div>
     </nav>
