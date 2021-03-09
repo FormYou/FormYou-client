@@ -13,3 +13,9 @@ $color-bg: #A8A8A8;
 a:link, a:visited {
   text-decoration: none;
 }
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
