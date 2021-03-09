@@ -1,21 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Navbar from 'components/Navbar/Navbar';
-import Home from 'components/Home/Home';
-import './index.scss';
+import App from './App';
+import store from 'store/store';
+import { Provider } from 'react-redux';
 
-const Index = () => (
-  <Router>
-	  <Navbar />
-	  <main>
-		  <Switch>
-			  <Route path="/" exact>
-			  	<Home />
-			  </Route>
-		  </Switch>
-	  </main>
-  </Router>
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+  document.getElementById('root')
 );
-
-ReactDOM.render(<Index />, document.getElementById('root'));
