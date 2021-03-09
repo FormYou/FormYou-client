@@ -1,4 +1,7 @@
 import './SignUp.scss';
+import Cookies from 'js-cookie';
+import { useSelector, useDispatch } from 'react-redux';
+import { setID, setName } from 'actions';
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
@@ -8,6 +11,7 @@ import Select from "components/Select/Select";
 import Input from "components/Input/Input";
 
 const SignUp = () => {
+    const dispatch = useDispatch();
     const [displayError, setDisplayError] = useState('');
     const { register, handleSubmit, watch, errors } = useForm();
     const history = useHistory();
@@ -22,8 +26,11 @@ const SignUp = () => {
         })
         .then((response) => response.json())
         .then((response) => {
-            console.log(response);
-            history.push("/");
+          dispatch(setID(response.user.id));
+          dispatch(setName(response.user.username));
+          Cookies.set('token', response.jwt);
+          console.log(response);
+          history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
     }
