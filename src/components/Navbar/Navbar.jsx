@@ -1,7 +1,10 @@
+import React from 'react';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+  const name = useSelector(state => state.name);
 
   return (
     <nav className="Navbar">
@@ -11,9 +14,7 @@ const Navbar = () => {
           </Link>
         </div>
       <div className="Navbar__right">
-        <Link to="/signin">
-         <p className="Navbar__right__subscribe">Connexion</p>
-        </Link>
+        {name==='' ? <Link to="/signin"><p>Connexion</p></Link> :  <p>{name}</p>}
       </div>
     </nav>
   );

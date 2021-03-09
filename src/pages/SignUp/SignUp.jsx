@@ -26,10 +26,10 @@ const SignUp = () => {
         })
         .then((response) => response.json())
         .then((response) => {
-          dispatch(setID(response.user.id));
-          dispatch(setName(response.user.username));
-          Cookies.set('token', response.jwt);
+          dispatch(setID(response.data.id));
+          dispatch(setName(response.data.attributes.name));
           console.log(response);
+          Cookies.set('token', response.jwt);
           history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));

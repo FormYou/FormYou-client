@@ -26,10 +26,10 @@ const SignIn = () => {
         })
         .then((response) => response.json())
         .then((response) => {
-          dispatch(setID(response.user.id));
-          dispatch(setName(response.user.username));
+          dispatch(setID(response.data.id));
+          dispatch(setName(response.data.attributes.name));
           Cookies.set('token', response.jwt);
-            history.push("/");
+          history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
     }
