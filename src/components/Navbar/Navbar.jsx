@@ -1,10 +1,27 @@
 import React from 'react';
 import './Navbar.scss';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogout } from 'store/User/userAction';
+import { api } from 'data/api.json';
 
 const Navbar = () => {
-  const name = useSelector(state => state.name);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector(state => state);
+
+  const logout = () => {
+    fetch(`${api}logout`, {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${user.token}`,
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => {
+      dispatch(setLogout());
+      history.pushState('/');
+    })
+  }
 
   return (
     <nav className="Navbar">
@@ -14,7 +31,15 @@ const Navbar = () => {
           </Link>
         </div>
       <div className="Navbar__right">
-        {name ? <p>{name}</p> : <Link to="/signin"><p>Connexion</p></Link>}
+        {user.token && (
+          <>
+            <p>{user.name}</p>
+            <button type="button" onClick={logout}>Se deconnecter</button>
+          </>
+         )}
+        {!user.token && (
+          <Link to="/signin">Connexion</Link>
+        )}
       </div>
     </nav>
   );

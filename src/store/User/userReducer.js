@@ -18,6 +18,16 @@ const userReducer = (state = initialState, action) => {
         role: action.role,
         token: action.token
       }
+    case "SET_LOGOUT":
+      Cookies.remove('userName');
+      Cookies.remove('userRole');
+      Cookies.remove('token');
+      return {
+        ...state,
+        name: null,
+        role: null,
+        token: null
+      }
     default:
       return state;
   }
