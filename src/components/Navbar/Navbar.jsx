@@ -14,7 +14,7 @@ const Navbar = () => {
           </Link>
         </div>
       <div className="Navbar__right">
-        {name==='' ? <Link to="/signin"><p>Connexion</p></Link> :  <p>{name}</p>}
+        {name ? <p>{name}</p> : <Link to="/signin"><p>Connexion</p></Link>}
       </div>
     </nav>
   );

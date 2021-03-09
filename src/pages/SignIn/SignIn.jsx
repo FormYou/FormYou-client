@@ -1,7 +1,7 @@
 import './SignIn.scss';
 import Cookies from 'js-cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import { setID, setName } from 'actions';
+import { setUser } from 'store/User/userAction';
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router-dom';
@@ -17,6 +17,7 @@ const SignIn = () => {
     const history = useHistory();
 
     const signin = data => {
+      let userToken = "";
         fetch(`${api}login`, {
           method: 'post',
           headers: {
@@ -24,11 +25,12 @@ const SignIn = () => {
           },
           body: JSON.stringify({user: data})
         })
-        .then((response) => response.json())
         .then((response) => {
-          dispatch(setID(response.data.id));
-          dispatch(setName(response.data.attributes.name));
-          Cookies.set('token', response.jwt);
+          userToken = response.headers.get('Authorization');
+          return response.json()
+        })
+        .then((response) => {
+          dispatch(setUser(response.data.attributes.name, response.data.attributes.role, userToken));
           history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
