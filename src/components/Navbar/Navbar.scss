@@ -1,4 +1,4 @@
-@import 'index.scss';
+@import "index.scss";
 
 .Navbar {
   background: $color-bg;
@@ -6,4 +6,15 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  &__right {
+    display: flex;
+    p {
+      margin-right: 10px;
+    }
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  }
 }

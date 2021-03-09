@@ -14,12 +14,12 @@ const Navbar = () => {
     fetch(`${api}logout`, {
       method: 'delete',
       headers: {
-        'Authorization': `Bearer ${user.token}`,
+        'Authorization': user.token,
         'Content-Type': 'application/json',
       },
     }).then((response) => {
       dispatch(setLogout());
-      history.pushState('/');
+      history.push('/');
     })
   }
 
