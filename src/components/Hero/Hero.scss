@@ -1,10 +1,19 @@
-@import 'index.scss';
+@import "index.scss";
 
 .Hero {
-	&__title {
-
-	}
-	&__image {
-	 width: 50vh;
-	}
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 700px;
+  &__presentation {
+    width: 600px;
+    &__title,
+    &__text {
+      margin: 15px;
+    }
+  }
+  &__image {
+    width: 600px;
+  }
 }
