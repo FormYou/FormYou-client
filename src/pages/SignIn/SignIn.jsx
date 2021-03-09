@@ -1,5 +1,4 @@
 import './SignIn.scss';
-import Cookies from 'js-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from 'store/User/userAction';
 import React, { useState } from "react";
@@ -41,7 +40,7 @@ const SignIn = () => {
         <h1 className="SignIn__title">Se connecter</h1>
         <Form className="SignIn__form" onSubmit={signin}>
           <Input className="SignIn__form__email" name="email" placeholder="email" />
-          <Input className="SignIn__form__password" name="password" placeholder="mot de passe" />
+          <Input className="SignIn__form__password" type="password" name="password" placeholder="mot de passe" />
           <Input className="SignIn__form__submit" type="submit" value="connexion" />
         </Form>
         <Link to="/signup">
