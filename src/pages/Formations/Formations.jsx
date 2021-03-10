@@ -30,9 +30,11 @@ const Formations = () => {
         {user.role === "admin" ? <CreateFormation getFormations={getFormations}/> : <p>not an admin</p>}
         <h2 className="Formations__listTitle">Liste des formations</h2>
         <ul>{formations !== [] && formations.map((formation) => (
-          <Link to="/">
-          <li>{formation.title}</li>
-          </Link>
+          <li key={formation.id}>
+            <Link to="/">
+              {formation.title}
+            </Link>
+          </li>
         ))}
         </ul>
     </div>
