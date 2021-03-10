@@ -10,10 +10,10 @@ import Form from "components/Form/Form";
 import Input from "components/Input/Input";
 
 const SignIn = () => {
-    const dispatch = useDispatch();
-    const [displayError, setDisplayError] = useState('');
-    const { register, handleSubmit, watch, errors } = useForm();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const [displayError, setDisplayError] = useState('');
+  const { register, handleSubmit, watch, errors } = useForm();
+  const history = useHistory();
 
     const signin = data => {
       let userToken = "";
