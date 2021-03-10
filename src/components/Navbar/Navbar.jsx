@@ -27,8 +27,11 @@ const Navbar = () => {
     <nav className="Navbar">
         <div className="Navbar__left">
           <Link to="/">
-          <p className="Navbar__left__title">YouForm</p>
+            <p className="Navbar__left__title">YouForm</p>
           </Link>
+          {user.role === 'admin' && (
+            <Link to="/users">Validations utilisateurs</Link>
+          )}
         </div>
       <div className="Navbar__right">
         {user.token && (
