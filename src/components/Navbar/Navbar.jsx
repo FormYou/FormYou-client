@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogout } from 'store/User/userAction';
 import { api } from 'data/api.json';
+import logo from './src/img/youform_logo.svg';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Navbar = () => {
     <nav className="Navbar">
         <div className="Navbar__left">
           <Link to="/">
-          <p className="Navbar__left__title">YouForm</p>
+            <img src={logo} alt="YouForm logo" />
           </Link>
         </div>
       <div className="Navbar__right">

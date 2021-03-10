@@ -1,10 +1,43 @@
 import './Formations.scss';
+import { api } from 'data/api';
+import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+
+import CreateFormation from 'components/CreateFormation/CreateFormation';
 
 const Formations = () => {
+	const [formations, setFormations] = useState([]);
+	const [displayError, setDisplayError] = useState('');
+  const user = useSelector(state => state);
+
+	useEffect(() => {
+    getFormations()
+  }, [])
+
+	const getFormations = () => {
+        fetch(`${api}formations`, {
+          method: 'get',
+          headers: {
+            'Authorization': user.token,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        .then((response) => {
+          setFormations(response)
+        })
+        .catch((error) => setDisplayError('Mauvais identifiant / password'));
+  }
 
   return (
     <div className="Formations">
-        <p>hello from formations</p>
+        <h1 className="Formations__title">Découvrez nos formations</h1>
+        {user.role === "admin" ? <CreateFormation /> : <p>not an admin</p>}
+        <h2 className="Formations__listTitle">Liste des formations</h2>
+        <ul>{formations.map((formation) => (
+          <li>{formation.title}</li>
+        ))}
+        </ul>
     </div>
   );
 };

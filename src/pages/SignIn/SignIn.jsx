@@ -10,30 +10,30 @@ import Form from "components/Form/Form";
 import Input from "components/Input/Input";
 
 const SignIn = () => {
-    const dispatch = useDispatch();
-    const [displayError, setDisplayError] = useState('');
-    const { register, handleSubmit, watch, errors } = useForm();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const [displayError, setDisplayError] = useState('');
+  const { register, handleSubmit, watch, errors } = useForm();
+  const history = useHistory();
 
-    const signin = data => {
-      let userToken = "";
-        fetch(`${api}login`, {
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({user: data})
-        })
-        .then((response) => {
-          userToken = response.headers.get('Authorization');
-          return response.json()
-        })
-        .then((response) => {
-          dispatch(setUser(response.data.attributes.name, response.data.attributes.role, userToken));
-          history.push("/");
-        })
-        .catch((error) => setDisplayError('Mauvais identifiant / password'));
-    }
+  const signin = data => {
+    let userToken = "";
+      fetch(`${api}login`, {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user: data})
+      })
+      .then((response) => {
+        userToken = response.headers.get('Authorization');
+        return response.json()
+      })
+      .then((response) => {
+        dispatch(setUser(response.data.attributes.name, response.data.attributes.role, userToken));
+        history.push("/");
+      })
+      .catch((error) => setDisplayError('Mauvais identifiant / password'));
+  }
 
   return (
     <div className="SignIn">
