@@ -1,10 +1,11 @@
 import './Home.scss';
+import Hero from 'components/Hero/Hero';
 
 const Home = () => {
 
   return (
     <div className="Home">
-        <p>Hello from Home!</p>
+        <Hero />   
     </div>
   );
 };

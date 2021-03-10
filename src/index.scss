@@ -1,15 +1,32 @@
-$color-bg: #A8A8A8;
+$color-bg: #a8a8a8;
 
 @font-face {
-  font-family: 'Halibut';
-  src: local('MyFont'), url(./fonts/HalibutSerif-Regular.woff2) format('woff2');
+  font-family: "ApercuBold";
+  src: local("MyFont"), url(./fonts/ApercuBold.ttf) format("truetype");
 }
 
 * {
   margin: 0;
-  font-family: 'Halibut';
+  font-family: "ApercuBold";
 }
 
-a:link, a:visited {
+h1 {
+  line-height: 1.25;
+  font-size: 3.5rem;
+}
+
+h2 {
+  line-height: 1.625;
+  font-size: 1.5rem;
+}
+
+a:link,
+a:visited {
   text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
