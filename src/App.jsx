@@ -7,22 +7,30 @@ import Home from 'pages/Home/Home';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
 import Formations from 'pages/Formations/Formations';
+import Users from 'pages/Users';
 import NoMatch from 'pages/NoMatch/NoMatch';
 
 const App = () => {
 
-  const id = useSelector(state => state.id);
-
-  const checkAuth = () => {
-    return id === '' ? false : true
-  }
+  const checked = useSelector(state => state.checked);
+  const role = useSelector(state => state.role);
 
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
-      checkAuth() ? (
+      checked ? (
         <Component {...props} />
       ) : (
           <Redirect to={{ pathname: '/login' }} />
+        )
+    )} />
+  )
+
+  const PrivateAdminRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => (
+      role === 'admin' ? (
+        <Component {...props} />
+      ) : (
+          <Redirect to={{ pathname: '/' }} />
         )
     )} />
   )
@@ -36,6 +44,7 @@ const App = () => {
               <Route path="/signin" exact component={SignIn} />
               <Route path="/signup" exact component={SignUp} />
               <Route path="/formations" exact component={Formations} />
+              <PrivateAdminRoute path="/users" component={Users} />
               <Route component={NoMatch} />
             </Switch>
         </main>
