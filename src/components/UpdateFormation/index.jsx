@@ -1,12 +1,14 @@
-import './CreateFormation.scss';
+import './UpdateFormation.scss';
 import { api } from 'data/api';
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
+import { useParams } from "react-router-dom";
 
-const CreateFormation = ({ getFormations }) => {
-  const [formation, setFormation] = useState({title:"", description:"", user_id:""});
+const UpdateFormation = ({ getFormation, title, description, teacher }) => {
+  const [formation, setFormation] = useState({title, description, user_id:""});
 	const [teachers, setTeachers] = useState([]);
   const user = useSelector(state => state);
+  const { id } = useParams();
 
 	useEffect(() => {
     	getTeachers()
@@ -27,17 +29,17 @@ const CreateFormation = ({ getFormations }) => {
 	    .catch((error) => console.log(error));
 	}
 
-  const createFormation = (e) => {
+  const updateFormation = (e) => {
       e.preventDefault();
-      fetch(`${api}formations`, {
-          method: 'post',
+      fetch(`${api}formations/${id}`, {
+          method: 'put',
           headers: {
             'Authorization': user.token,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(formation)
         })
-      .then((response) => getFormations())
+      .then((response) => getFormation())
       .catch((error) => console.log(error));
   }
 
@@ -49,22 +51,22 @@ const CreateFormation = ({ getFormations }) => {
   }
 
   return (
-    <div className="CreateFormation">
-        <h2 className="CreateFormation__title">Nouvelle Formation</h2>
+    <div className="UpdateFormation">
+        <h2 className="UpdateFormation__title">Nouvelle Formation</h2>
 
-        <form className="CreateFormation__form" onSubmit={createFormation}>
-          <select className="CreateFormation__form__select" name="user_id" onChange={handleChange}>
-              <option >Choix du professeur</option>
+        <form className="UpdateFormation__form" onSubmit={updateFormation}>
+          <select className="UpdateFormation__form__select" name="user_id" onChange={handleChange}>
+              <option value={teacher.id}>{teacher.name}</option>
             {teachers && teachers.map((teacher)=> (
               <option value={teacher.id} >{teacher.name}</option>
             ))}
           </select>
-          <input className="CreateFormation__form__name" name="title" placeholder="titre" onChange={handleChange}/>
-          <textarea className="CreateFormation__form__name" name="description" placeholder="description (min 20 caractères)" onChange={handleChange}/>
-          <input className="CreateFormation__form__submit" type="submit" value="créer nouvelle formation"/>
+          <input className="UpdateFormation__form__name" name="title" value={formation.title} onChange={handleChange}/>
+          <textarea className="UpdateFormation__form__name" name="description" value={formation.description} onChange={handleChange}/>
+          <input className="UpdateFormation__form__submit" type="submit" value="modifier la formation"/>
         </form>
     </div>
   );
 };
 
-export default CreateFormation;
+export default UpdateFormation;
