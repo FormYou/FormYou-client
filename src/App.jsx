@@ -9,6 +9,7 @@ import SignUp from 'pages/SignUp/SignUp';
 import Formations from 'pages/Formations/Formations';
 import Users from 'pages/Users';
 import NoMatch from 'pages/NoMatch/NoMatch';
+import Sessions from 'pages/Session/Session';
 
 const App = () => {
 
@@ -40,11 +41,14 @@ const App = () => {
         <Navbar />
         <main>
             <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/signin" exact component={SignIn} />
-              <Route path="/signup" exact component={SignUp} />
-              <Route path="/formations" exact component={Formations} />
-              <PrivateAdminRoute path="/users" component={Users} />
+              <div className="main">
+                <Route path="/" exact component={Home} />
+                <Route path="/signin" exact component={SignIn} />
+                <Route path="/signup" exact component={SignUp} />
+                <Route path="/formations" exact component={Formations} />
+                <PrivateAdminRoute path="/users" component={Users} />
+              </div>
+              <PrivateRoute path='/session' component={Sessions} />
               <Route component={NoMatch} />
             </Switch>
         </main>

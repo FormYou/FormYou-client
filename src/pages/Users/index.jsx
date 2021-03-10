@@ -27,7 +27,7 @@ const Users = () => {
   }, []);
 
   return (
-    <ul className="User-list">
+    <ul className="Users User-list">
       {notCheckedUsers && notCheckedUsers.map((user) => (
         <li key={user.id}>
           <p><span>Nom : </span>{user.name}</p>

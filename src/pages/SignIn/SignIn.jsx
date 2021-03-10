@@ -1,4 +1,4 @@
-import './SignIn.scss';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from 'store/User/userAction';
 import React, { useState } from "react";
