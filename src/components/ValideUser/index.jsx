@@ -17,6 +17,7 @@ const ValideUser = ({ id, notChecked }) => {
     .then((response) => {
       notChecked();   
     })
+    .catch((error) => `error : ${error}`)
   }
 
   return (

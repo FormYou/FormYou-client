@@ -1,7 +1,8 @@
-export const setUser = (name, role, token) => ({
+export const setUser = (name, role, checked, token) => ({
     type: "SET_USER",
     name,
     role,
+    checked,
     token
 });
 

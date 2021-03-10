@@ -19,7 +19,7 @@ const Users = () => {
       .then((response) => {
         setNotCheckedUsers(response);
         console.log(response)
-      })
+      }).catch((error) => `error : ${error}`)
   }
 
   useEffect(() => {
