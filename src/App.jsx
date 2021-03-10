@@ -6,6 +6,7 @@ import Navbar from 'components/Navbar/Navbar';
 import Home from 'pages/Home/Home';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
+import Users from 'pages/Users';
 import NoMatch from 'pages/NoMatch/NoMatch';
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/" exact component={Home} />
               <Route path="/signin" exact component={SignIn} />
               <Route path="/signup" exact component={SignUp} />
+              <Route path="/users" exact component={Users} />
               <Route component={NoMatch} />
             </Switch>
         </main>
