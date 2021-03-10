@@ -16,11 +16,7 @@ const Formations = () => {
 
 	const getFormations = () => {
         fetch(`${api}formations`, {
-          method: 'get',
-          headers: {
-            'Authorization': user.token,
-            'Content-Type': 'application/json',
-          },
+          method: 'get'
         })
         .then((response) => response.json())
         .then((response) => {
@@ -34,7 +30,7 @@ const Formations = () => {
         <h1 className="Formations__title">Découvrez nos formations</h1>
         {user.role === "admin" ? <CreateFormation /> : <p>not an admin</p>}
         <h2 className="Formations__listTitle">Liste des formations</h2>
-        <ul>{formations.map((formation) => (
+        <ul>{formations !== [] && formations.map((formation) => (
           <li>{formation.title}</li>
         ))}
         </ul>

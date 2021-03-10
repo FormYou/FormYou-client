@@ -8,6 +8,7 @@ import Select from "components/Select/Select";
 import Input from "components/Input/Input";
 
 const CreateFormation = () => {
+  const [users, setUsers] = useState([]);
 	const [teachers, setTeachers] = useState([]);
 	const [displayError, setDisplayError] = useState('');
   const user = useSelector(state => state);
@@ -26,7 +27,7 @@ const CreateFormation = () => {
         })
 	    .then((response) => response.json())
 	    .then((response) => {
-	      // console.log(response)
+	      setUsers(response)
 	    })
 	    .catch((error) => setDisplayError('Mauvais identifiant / password'));
 	}
