@@ -31,6 +31,9 @@ const Navbar = () => {
           </Link>
         </div>
       <div className="Navbar__right">
+        <Link to="/formations">
+          <p className="Navbar__right__formations">Nos Formations</p>
+        </Link>
         {user.token && (
           <>
             <p>{user.name}</p>
