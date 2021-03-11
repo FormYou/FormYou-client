@@ -75,7 +75,7 @@ const CreateFormation = ({ getFormations }) => {
           </select>
           <input className="CreateFormation__form__name" name="title" placeholder="titre" onChange={handleChange}/>
           <textarea className="CreateFormation__form__name" name="description" placeholder="description (min 20 caractères)" onChange={handleChange}/>
-          <GetCategories handleChange={handleChange} setFormation={setFormation} formation={formation} />
+          <GetCategories className="CreateFormation__form__getcategories" handleChange={handleChange} setFormation={setFormation} formation={formation} />
           <input className="CreateFormation__form__submit" type="submit" value="créer nouvelle formation"/>
         </form>
     </div>

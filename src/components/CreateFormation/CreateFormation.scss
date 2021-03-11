@@ -2,5 +2,14 @@
 
 .CreateFormation {
 	background-color: lightgrey;
-	height: 150px;
+	height: 350px;
+	&__title {
+		text-align: center;
+	}
+	&__form {
+		&__select, &__name, &__description, &__getcategories, &__submit {
+			margin: 10px;
+			padding: 10px;
+		}
+	}
 }
