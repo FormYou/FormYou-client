@@ -31,7 +31,6 @@ const SignUp = () => {
         })
         .then((response) => {
           dispatch(setUser(response.data.attributes.name, response.data.attributes.role, userToken));
-          console.log(response);
           console.log(Cookies.get('userName'))
           history.push("/");
         })

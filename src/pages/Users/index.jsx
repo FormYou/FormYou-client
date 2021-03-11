@@ -18,7 +18,6 @@ const Users = () => {
     }).then((response) => response.json())
       .then((response) => {
         setNotCheckedUsers(response);
-        console.log(response)
       }).catch((error) => `error : ${error}`)
   }
 

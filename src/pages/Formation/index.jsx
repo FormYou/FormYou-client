@@ -25,7 +25,6 @@ const Formation = () => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response)
       setFormation(response)
     })
     .catch((error) => console.log(error));
@@ -34,7 +33,7 @@ const Formation = () => {
   return (
     <div className="Formation">
       <div className="Formation__update">
-        {user.role == 'admin' ? formation && <UpdateFormation getFormation={getFormation} title={formation.title} description={formation.description} teacher={formation.user}/> : ''}
+        {user.role == 'admin' ? formation && <UpdateFormation key={formation.id} getFormation={getFormation} title={formation.title} description={formation.description} teacher={formation.user}/> : ''}
       </div>
       <h1 className="Formation__title">{formation && formation.title}</h1>
       <p className="Formation__description">{formation && formation.description}</p>
