@@ -35,9 +35,11 @@ const Formation = () => {
       <div className="Formation__update">
         {user.role == 'admin' ? formation && <UpdateFormation key={formation.id} getFormation={getFormation} title={formation.title} description={formation.description} teacher={formation.user}/> : ''}
       </div>
-      <h1 className="Formation__title">{formation && formation.title}</h1>
-      <p className="Formation__description">{formation && formation.description}</p>
-      <p className="Formation__teacher">professeur: {formation && formation.user.name}</p>
+      <div className="Formation__head">
+        <h1 className="Formation__head__title">{formation && formation.title}</h1>
+        <p className="Formation__head__description">{formation && formation.description}</p>
+        <p className="Formation__head__teacher">professeur: {formation && formation.user.name}</p>
+      </div>
     </div>
   );
 };
