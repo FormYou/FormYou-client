@@ -8,7 +8,6 @@ const CreateFormation = ({ getFormations }) => {
   const [teachers, setTeachers] = useState();
   const [formation, setFormation] = useState({title:"", description:"", user_id: "", category_id: []});
   const user = useSelector(state => state);
-  const inputRef = useRef(null);
 
 	useEffect(() => {
     	getTeachers()
@@ -40,7 +39,10 @@ const CreateFormation = ({ getFormations }) => {
           },
           body: JSON.stringify(formation)
         })
-      .then((response) => getFormations())
+      .then((response) => {
+        setFormation({...formation, title: "", description: ""})
+        getFormations()
+      })
       .catch((error) => console.log(error));
   }
 
@@ -63,13 +65,12 @@ const CreateFormation = ({ getFormations }) => {
         <h2 className="CreateFormation__title">Nouvelle Formation</h2>
         <form className="CreateFormation__form" onSubmit={createFormation}>
           <select className="CreateFormation__form__select" name="user_id" onChange={handleChange}>
-              <option >Choix du professeur</option>
             {teachers && teachers.map((teacher) => (
               <option key={teacher.id} value={teacher.id}>{teacher.name}</option>
             ))}
           </select>
-          <input className="CreateFormation__form__name" name="title" placeholder="titre" onChange={handleChange}/>
-          <textarea className="CreateFormation__form__description" name="description" placeholder="description (min 20 caractères)" onChange={handleChange}/>
+          <input className="CreateFormation__form__name" name="title" value={formation.title} placeholder="titre" onChange={handleChange}/>
+          <textarea className="CreateFormation__form__description" value={formation.description} name="description" placeholder="description (min 20 caractères)" onChange={handleChange}/>
           <GetCategories className="CreateFormation__form__getcategories" handleChange={handleChange} setFormation={setFormation} formation={formation} />
           <input className="CreateFormation__form__submit" type="submit" value="créer nouvelle formation"/>
         </form>

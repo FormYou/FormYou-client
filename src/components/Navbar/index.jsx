@@ -31,7 +31,10 @@ const Navbar = () => {
             <img src={logo} alt="YouForm logo" />
           </Link>
           {user.role === 'admin' && (
-            <Link to="/users">Validations utilisateurs</Link>
+            <>
+              <Link to="/users">Validations utilisateurs</Link>
+              <Link to="/category">Ajouter categorie</Link>
+            </>
           )}
         </div>
       <div className="Navbar__right">

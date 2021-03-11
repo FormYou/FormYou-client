@@ -9,6 +9,7 @@ import SignUp from 'pages/SignUp';
 import Formations from 'pages/Formations';
 import Formation from 'pages/Formation';
 import Users from 'pages/Users';
+import AddCategory from 'pages/AddCategory';
 import Profile from 'pages/Profile';
 import NoMatch from 'pages/NoMatch';
 
@@ -49,6 +50,7 @@ const App = () => {
           <PrivateRoute exact path="/formation/:id" component={Formation} />
           <PrivateAdminRoute path="/users" component={Users} />
           <PrivateRoute path="/profile" component={Profile} />
+          <PrivateAdminRoute path="/category" component={AddCategory} />
           <Route component={NoMatch} />
         </Switch>
       </main>
