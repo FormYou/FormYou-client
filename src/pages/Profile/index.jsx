@@ -22,18 +22,18 @@ const Profile = () => {
     }, [allSessions])
 
     const getSessions = () => {
-    fetch(`${api}/formations/1/sessions`, {
-      method: 'get',
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((response) => response.json())
-    .then((response) => {
-      setAllSessions(response)
-    })
-    .catch((error) => console.log(error));
+        fetch(`${api}/formations/1/sessions`, {
+          method: 'get',
+          headers: {
+            'Authorization': token,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        .then((response) => {
+          setAllSessions(response)
+        })
+        .catch((error) => console.log(error));
     }
 
     const getPast = () => {
