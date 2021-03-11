@@ -8,6 +8,7 @@ import { api } from 'data/api.json';
 import { Link } from 'react-router-dom';
 import Form from "components/Form/Form";
 import Input from "components/Input/Input";
+import './SignIn.scss';
 
 const SignIn = () => {
   const dispatch = useDispatch();
