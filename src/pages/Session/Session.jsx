@@ -18,7 +18,6 @@ const Sessions = () => {
       }
     }).then((response) => response.json())
       .then((response) => {
-        console.log(response)
         setSessionDate(response)
 
       }).catch((error) => `error : ${error}`)
