@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { api } from 'data/api';
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
+import SessionList from 'components/SessionList';
 
 import UpdateFormation from 'components/UpdateFormation';
 
@@ -42,6 +43,7 @@ const Formation = () => {
       </div>
       <div className="Formation__sessions">
         <h2 className="Formation__sessions__title">Sessions à venir</h2>
+        {formation && <SessionList formation_id={formation.id} />}
       </div>
     </div>
   );
