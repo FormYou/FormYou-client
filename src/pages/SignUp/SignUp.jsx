@@ -31,9 +31,9 @@ const SignUp = () => {
         })
         .then((response) => {
           dispatch(setUser(response.data.attributes.name, 
-                          response.data.attributes.role, 
-                          response.data.attributes.checked,
-                          userToken));
+            response.data.attributes.role, 
+            response.data.attributes.checked,
+            userToken));
           history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));

@@ -1,6 +1,6 @@
 @import "index.scss";
 
-.CreateFormation {
+.UpdateFormation {
 	background-color: lightgrey;
 	height: 350px;
 	&__title {
@@ -11,5 +11,8 @@
 			margin: 10px;
 			padding: 10px;
 		}
+	}
+	&__delete {
+		text-align: center;
 	}
 }

@@ -29,7 +29,6 @@ const SignIn = () => {
           return response.json()
         })
         .then((response) => {
-          console.log(response);
           dispatch(setUser(response.data.attributes.name, 
                           response.data.attributes.role, 
                           response.data.attributes.checked,

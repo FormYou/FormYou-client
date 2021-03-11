@@ -6,10 +6,12 @@ import Navbar from 'components/Navbar/Navbar';
 import Home from 'pages/Home/Home';
 import SignIn from 'pages/SignIn/SignIn';
 import SignUp from 'pages/SignUp/SignUp';
-import Formations from 'pages/Formations/Formations';
+import Formations from 'pages/Formations';
+import Formation from 'pages/Formation';
 import Users from 'pages/Users';
 import NoMatch from 'pages/NoMatch/NoMatch';
-import Sessions from 'pages/Session/Session';
+import AddCategory from 'pages/AddCategory';
+import Sessions from 'pages/Session/Session'
 
 const App = () => {
 
@@ -38,18 +40,20 @@ const App = () => {
   
   return (
     <Router>
-        <Navbar />
-        <main>
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/signin" exact component={SignIn} />
-                <Route path="/signup" exact component={SignUp} />
-                <Route path="/formations" exact component={Formations} />
-                <PrivateAdminRoute path="/users" component={Users} />
-              <PrivateRoute path='/session' component={Sessions} />
-              <Route component={NoMatch} />
-            </Switch>
-        </main>
+      <Navbar />
+      <main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signin" exact component={SignIn} />
+          <Route path="/signup" exact component={SignUp} />
+          <Route path="/formations" exact component={Formations} />
+          <PrivateRoute exact path="/formation/:id" component={Formation} />
+          <PrivateAdminRoute path="/users" component={Users} />
+          <PrivateAdminRoute path="/category" component={AddCategory} />
+          <PrivateRoute path='/session' component={Sessions} />
+          <Route component={NoMatch} />
+        </Switch>
+      </main>
     </Router>
   );
 }

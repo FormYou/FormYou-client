@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { api } from 'data/api.json';
-import './index.scss';
-import ValideUser from 'components/ValideUser';
-import AllUsers from 'components/AllUsers';
 import DeleteUser from 'components/DeleteUser';
 
-const Users = () => {
-  const user = useSelector(state => state.token);
-  const [notCheckedUsers, setNotCheckedUsers] = useState('');
+const AllUsers = () => {
+  const user = useSelector(state => state);
+  const [users, setUsers] = useState('');
 
-  const notChecked = () => {
-    fetch(`${api}users/checked`, {
+  const fetchUsers = () => {
+    fetch(`${api}users`, {
       method: 'get',
       headers: {
         'Authorization': user.token,
@@ -19,31 +16,29 @@ const Users = () => {
       }
     }).then((response) => response.json())
       .then((response) => {
-        setNotCheckedUsers(response);
+        setUsers(response);
       }).catch((error) => `error : ${error}`)
   }
 
   useEffect(() => {
-    notChecked();
+    fetchUsers();
   }, []);
 
   return (
     <>
-      <h2>Les Utilisateurs non validé :</h2>
+      <h2>Tout les utilisateurs</h2>
       <ul className="User-list">
-        {notCheckedUsers && notCheckedUsers.map((user) => (
+        {users && users.map((user) => (
           <li key={user.id}>
             <p><span>Nom : </span>{user.name}</p>
             <p><span>Email : </span> {user.email}</p>
             <p><span>Role : </span> {user.role}</p>
-            <ValideUser id={user.id} notChecked={notChecked} />
-            <DeleteUser id={user.id} allUsers={notChecked} />
+            <DeleteUser id={user.id} allUsers={fetchUsers} />
           </li>
         ))}
       </ul>
-      <AllUsers />
     </>
   );
 };
 
-export default Users;
+export default AllUsers;
