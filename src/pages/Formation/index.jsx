@@ -40,6 +40,9 @@ const Formation = () => {
         <p className="Formation__head__description">{formation && formation.description}</p>
         <p className="Formation__head__teacher">professeur: {formation && formation.user.name}</p>
       </div>
+      <div className="Formation__sessions">
+        <h2 className="Formation__sessions__title">Sessions à venir</h2>
+      </div>
     </div>
   );
 };
