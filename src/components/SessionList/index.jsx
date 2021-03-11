@@ -1,11 +1,12 @@
 import './SessionList.scss';
 import React, { useState, useEffect } from "react";
+import { api } from 'data/api';
 
 const SessionList = () => {
 	const [sessions, setSessions] = useState();
 
 	const getSessions = () => {
-        fetch(`${api}formations/${id}/sessions`, {
+        fetch(`${api}/sessions`, {
           method: 'get'
         })
         .then((response) => response.json())

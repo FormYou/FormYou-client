@@ -37,7 +37,7 @@ const Formation = () => {
       </div>
       <div className="Formation__head">
         <h1 className="Formation__head__title">{formation && formation.title}</h1>
-        <p className="Formation__head__description">{formation && formation.description}</p>
+        <h2 className="Formation__head__description">{formation && formation.description}</h2>
         <p className="Formation__head__teacher">professeur: {formation && formation.user.name}</p>
       </div>
       <div className="Formation__sessions">
