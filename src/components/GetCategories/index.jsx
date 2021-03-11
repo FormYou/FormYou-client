@@ -18,7 +18,6 @@ const GetCategories = ({ handleChange, setFormation, formation }) => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       setCategories(response);
     })
     .catch((error) => console.log(error));
