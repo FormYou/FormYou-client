@@ -7,11 +7,10 @@ import './Session.scss'
 
 const Sessions = () => {
   const userToken = useSelector(state => state.token);
-  const [sessions, setSessions] = useState();
   const [sessionDate, setSessionDate] = useState([]);
-  let arr = []
+  let arr; 
   const sessionFetch = () => {
-    fetch(`${api}formations`, {
+    fetch(`${api}sessions`, {
       method: 'get',
       headers: {
         'Authorization': userToken,
@@ -19,37 +18,32 @@ const Sessions = () => {
       }
     }).then((response) => response.json())
       .then((response) => {
-        response.map(formation => {
-          formation.sessions.map(session => {
-            arr.push(session.date)
-           
-          })
-        })
-        setSessions(arr)
-        arr.map(item => {
-          console.log(item)
-          setSessionDate(...sessionDate, {title: 'hello', date: item})
-        })
+        console.log(response)
+        setSessionDate(response)
 
       }).catch((error) => `error : ${error}`)
   }
-
+  
   useEffect(() => {
     sessionFetch()
   }, [])
-  console.log(sessionDate)
+
+  if (sessionDate.length > 1) {
+    arr = sessionDate.map(item => (
+      {title: `${item.formation.title} participant: ${item.attendences.length}`, date: item.date}
+    ))
+  }
+
   return (
     <div className='Sessions'>
   
       <h2>Toute les Sessions</h2>
       
-      
-        {sessionDate && <FullCalendar
+      {sessionDate && <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
-
-        events={sessionDate}
-      />}
+        events={arr}
+        /> }
     </div>
   )
 }
