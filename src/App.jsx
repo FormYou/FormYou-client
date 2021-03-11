@@ -50,7 +50,7 @@ const App = () => {
           <PrivateRoute exact path="/formation/:id" component={Formation} />
           <PrivateAdminRoute path="/users" component={Users} />
           <PrivateAdminRoute path="/category" component={AddCategory} />
-          <PrivateRoute path='/session' component={Sessions} />
+          <PrivateRoute path='/calendar' component={Sessions} />
           <Route component={NoMatch} />
         </Switch>
       </main>

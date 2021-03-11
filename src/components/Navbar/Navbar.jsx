@@ -42,7 +42,7 @@ const Navbar = () => {
           <p className="Navbar__right__formations">Nos Formations</p>
         </Link>
         {user.token && (
-          <Link to="/session">
+          <Link to="/calendar">
             <p >Les sessions</p>
           </Link>
         )}
