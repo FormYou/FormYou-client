@@ -42,14 +42,22 @@ const Navbar = () => {
           <p className="Navbar__right__formations">Nos Formations</p>
         </Link>
         {user.token && (
+          <Link to="/calendar">
+            <p >Les sessions</p>
+          </Link>
+        )}
+        {user.token && (
           <>
-            <p>{user.name}</p>
+            <Link to="/profile">
+              <p>{user.name}</p>
+            </Link>
             <button type="button" onClick={logout}>Se deconnecter</button>
           </>
          )}
         {!user.token && (
           <Link to="/signin">Connexion</Link>
         )}
+        
       </div>
     </nav>
   );

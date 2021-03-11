@@ -7,14 +7,14 @@ import AllUsers from 'components/AllUsers';
 import DeleteUser from 'components/DeleteUser';
 
 const Users = () => {
-  const user = useSelector(state => state);
+  const token = useSelector(state => state.token);
   const [notCheckedUsers, setNotCheckedUsers] = useState('');
 
   const notChecked = () => {
     fetch(`${api}users/checked`, {
       method: 'get',
       headers: {
-        'Authorization': user.token,
+        'Authorization': token,
         'Content-Type': 'application/json'
       }
     }).then((response) => response.json())

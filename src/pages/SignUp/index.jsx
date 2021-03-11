@@ -12,8 +12,6 @@ import Input from "components/Input/Input";
 
 const SignUp = () => {
     const dispatch = useDispatch();
-    const [displayError, setDisplayError] = useState('');
-    const { register, handleSubmit, watch, errors } = useForm();
     const history = useHistory();
 
     const signup = data => {
@@ -37,7 +35,7 @@ const SignUp = () => {
             response.data.id));
           history.push("/");
         })
-        .catch((error) => setDisplayError('Mauvais identifiant / password'));
+        .catch((error) => console.log(error));
     }
 
   return (
