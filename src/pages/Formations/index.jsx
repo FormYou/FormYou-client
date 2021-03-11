@@ -53,7 +53,7 @@ const Formations = () => {
         <h1 className="Formations__title">Découvrez nos formations</h1>
         {user.role === "admin" ? <CreateFormation getFormations={getFormations}/> : ''}
         <CategoriesFilter handleCategory={handleCategory} selectCat={selectCat} />
-        {/*<ul className="Formations__list">
+        <ul className="Formations__list">
           {filteredFormations ? filteredFormations.map((formation) => (
             <li className="Formations__list__item" key={formation.id}>
               {formation && <CardFormation formation={formation} link={`/formation/${formation.id}`}/>}
@@ -63,7 +63,7 @@ const Formations = () => {
             {formation && <CardFormation formation={formation} link={`/formation/${formation.id}`}/>}
           </li>
         ))}
-        </ul>*/}
+        </ul>
     </div>
   );
 };
