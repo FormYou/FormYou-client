@@ -14,6 +14,7 @@ import Inscription from 'pages/Inscription';
 import Sessions from 'pages/Session/Session';
 import Profile from 'pages/Profile';
 import NoMatch from 'pages/NoMatch';
+import Room from 'pages/Room';
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
           <PrivateAdminRoute path="/users" component={Users} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateAdminRoute path="/category" component={AddCategory} />
+          <PrivateAdminRoute path="/room" component={Room} />
           <PrivateRoute path='/calendar' component={Sessions} />
           <Route component={NoMatch} />
         </Switch>
