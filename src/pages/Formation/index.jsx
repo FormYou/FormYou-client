@@ -33,10 +33,12 @@ const Formation = () => {
 
   return (
     <div className="Formation">
-      {user.role == 'admin' ? formation && <UpdateFormation getFormation={getFormation} title={formation.title} description={formation.description} teacher={formation.user}/> : ''}
-      <h1>{formation && formation.title}</h1>
-      <p>{formation && formation.description}</p>
-      <p>professeur: {formation && formation.user.name}</p>
+      <div className="Formation__update">
+        {user.role == 'admin' ? formation && <UpdateFormation getFormation={getFormation} title={formation.title} description={formation.description} teacher={formation.user}/> : ''}
+      </div>
+      <h1 className="Formation__title">{formation && formation.title}</h1>
+      <p className="Formation__description">{formation && formation.description}</p>
+      <p className="Formation__teacher">professeur: {formation && formation.user.name}</p>
     </div>
   );
 };

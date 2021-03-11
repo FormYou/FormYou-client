@@ -52,7 +52,7 @@ const UpdateFormation = ({ getFormation, title, description, teacher }) => {
 
   return (
     <div className="UpdateFormation">
-        <h2 className="UpdateFormation__title">Nouvelle Formation</h2>
+        <h2 className="UpdateFormation__title">Modifier la formation</h2>
 
         <form className="UpdateFormation__form" onSubmit={updateFormation}>
           <select className="UpdateFormation__form__select" name="user_id" onChange={handleChange}>
