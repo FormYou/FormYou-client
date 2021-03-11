@@ -4,6 +4,7 @@ import { api } from 'data/api';
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import SessionList from 'components/SessionList';
+import CreateSession from 'components/CreateSession';
 
 import UpdateFormation from 'components/UpdateFormation';
 
@@ -41,6 +42,7 @@ const Formation = () => {
         <h2 className="Formation__head__description">{formation && formation.description}</h2>
         <p className="Formation__head__teacher">professeur: {formation && formation.user.name}</p>
       </div>
+      {user.role == 'admin' ? <CreateSession /> : ''}
       <div className="Formation__sessions">
         <h2 className="Formation__sessions__title">Sessions à venir</h2>
         {formation && <SessionList formation_id={formation.id} />}

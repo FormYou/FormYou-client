@@ -36,13 +36,18 @@ const SessionList = ({ formation_id }) => {
     setFutureSessions(allSessions.filter(answer => new Date(answer.date).getTime() - Date.now() > 0))
   }
 
+  const getFormatedDate = (session) => {
+    const months = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+    return `${session.date.substring(8, 10)} ${months[parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`
+  }
+
   return (
     <div>
     <p>all sessions:</p>
     <ul className="SessionList">
       {allSessions && allSessions.map((session) => (
         <Link to="/">
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
+          <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
     </ul>
@@ -50,7 +55,7 @@ const SessionList = ({ formation_id }) => {
     <ul className="SessionList">
       {pastSessions && pastSessions.map((session) => (
         <Link to="/">
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
+          <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
     </ul>
@@ -58,7 +63,7 @@ const SessionList = ({ formation_id }) => {
     <ul className="SessionList">
       {futureSessions && futureSessions.map((session) => (
         <Link to="/">
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
+          <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
     </ul>
