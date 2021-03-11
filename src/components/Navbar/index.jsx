@@ -40,7 +40,9 @@ const Navbar = () => {
         </Link>
         {user.token && (
           <>
-            <p>{user.name}</p>
+            <Link to="/profile">
+              <p>{user.name}</p>
+            </Link>
             <button type="button" onClick={logout}>Se deconnecter</button>
           </>
          )}

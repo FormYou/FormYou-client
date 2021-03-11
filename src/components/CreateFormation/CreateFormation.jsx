@@ -59,10 +59,6 @@ const CreateFormation = ({ getFormations }) => {
     }
   }
 
-  useEffect(() => {
-    console.log(formation)
-  }, [formation])
-
   return (
     <div className="CreateFormation">
         <h2 className="CreateFormation__title">Nouvelle Formation</h2>
