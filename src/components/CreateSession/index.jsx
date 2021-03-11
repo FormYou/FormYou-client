@@ -7,13 +7,21 @@ import GetCategories from 'components/GetCategories';
 const CreateSession = ({ formation_id }) => {
   const [rooms, setRooms] = useState();
   const [fullDate, setFullDate] = useState({year:"", month:"", day:""});
-  const [session, setSession] = useState({date:`${fullDate.year}-${fullDate.month}-${fullDate.day}`, duration:1, formation_id, room_id:[]});
+  const [session, setSession] = useState({date:"", duration:1, room_id:[]});
   const user = useSelector(state => state);
   
 
 	useEffect(() => {
     	getRooms()
   	}, [])
+
+  useEffect(()=> {
+    console.log(fullDate)
+    setSession({
+      ...session, date: `${fullDate.year}-${fullDate.month}-${fullDate.day}`
+    })
+    console.log(session)
+  },[fullDate])
 
 	const getRooms = () => {
 	    fetch(`${api}rooms`, {
@@ -26,14 +34,13 @@ const CreateSession = ({ formation_id }) => {
 	    .then((response) => response.json())
 	    .then((response) => {
 	      setRooms(response)
-        setSession({...session, user_id: response[0].id})
 	    })
 	    .catch((error) => console.log(error));
 	}
 
   const createSession = (e) => {
       e.preventDefault();
-      fetch(`${api}sessions`, {
+      fetch(`${api}formations/${formation_id}/sessions`, {
           method: 'post',
           headers: {
             'Authorization': user.token,
@@ -42,23 +49,16 @@ const CreateSession = ({ formation_id }) => {
           body: JSON.stringify(session)
         })
       .then((response) => {
-        setSession({...session, title: "", description: ""})
+        console.log(response)
       })
       .catch((error) => console.log(error));
   }
 
   const handleChange = (e) => {
-    if (e.target.name === "category_id") {
-      setSession({
-        ...session,
-        [e.target.name]: [...session.category_id, e.target.value]
-      })
-    } else {
-      setSession({
-        ...session,
-        [e.target.name]: e.target.value
-      })
-    }
+    setSession({
+      ...session,
+      [e.target.name]: e.target.value
+    })
   }
 
   const getYearArr = () => {
@@ -74,20 +74,12 @@ const CreateSession = ({ formation_id }) => {
     return ["Jour","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
   };
 
-  const handleFullYear = (e) => {
-    if (e.target.name === "category_id") {
-      setSession({
-        ...session,
-        [e.target.name]: [...session.category_id, e.target.value]
-      })
-    } else {
-      setSession({
-        ...session,
-        [e.target.name]: e.target.value
-      })
-    }
+  const handleFullDate = (e) => {
+    setFullDate({
+      ...fullDate,
+      [e.target.name]: e.target.value
+    })
   }
-
 
   return (
     <div className="CreateSession">
@@ -98,18 +90,18 @@ const CreateSession = ({ formation_id }) => {
             <option key={room.id} value={room.id}>{`salle n°${room.id}`}</option>
           ))}
         </select>
-        <select className="CreateSession__form__year" name="year" onChange={handleFullYear}>
+        <select className="CreateSession__form__year" name="year" onChange={handleFullDate}>
           <option>Année</option>
           { getYearArr().map((year) => (
             <option key={year} value={year}>{year}</option>
           ))}
         </select>
-        <select className="CreateSession__form__month" name="month" onChange={handleFullYear}>
+        <select className="CreateSession__form__month" name="month" onChange={handleFullDate}>
           { getMonthArr().map((month) => (
             <option key={month} value={month[1]}>{month[0]}</option>
           ))}
         </select>
-        <select className="CreateSession__form__day" name="day" onChange={handleFullYear}>
+        <select className="CreateSession__form__day" name="day" onChange={handleFullDate}>
           { getDayArr().map((day) => (
             <option key={day} value={day}>{day}</option>
           ))}
