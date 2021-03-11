@@ -1,0 +1,30 @@
+@import "index.scss";
+
+.Navbar {
+  background: $color-grey;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__left {
+    display: flex;
+    align-items: center;
+    a {
+      margin-right: 20px;
+    }
+  }
+  &__right {
+    display: flex;
+    p {
+      margin-right: 10px;
+    }
+    button {
+      cursor: pointer;
+      background: none;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

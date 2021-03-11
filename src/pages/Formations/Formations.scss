@@ -1,0 +1,20 @@
+@import "index.scss";
+
+.Formations {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    text-align: center;
+    margin: 25px 0 50px;
+  }
+  &__list {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    &__item {
+      list-style: none;
+    }
+  }
+}

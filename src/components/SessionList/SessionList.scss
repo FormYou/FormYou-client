@@ -1,0 +1,10 @@
+@import "index.scss";
+
+.SessionList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__item {
+	  list-style: none;
+	}
+}

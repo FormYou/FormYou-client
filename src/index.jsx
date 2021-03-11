@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const Index = () => (
-  <div>
-    <h1>Hello !</h1>
-  </div>
+import App from './App';
+import store from 'store/store';
+import { Provider } from 'react-redux';
+import Sessions from 'pages/Session/Session'
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+  document.getElementById('root')
 );
-
-ReactDOM.render(<Index />, document.getElementById('root'));

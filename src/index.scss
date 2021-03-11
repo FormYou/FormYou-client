@@ -1,0 +1,52 @@
+$color-grey: #a8a8a8;
+$color-purple: #5743BE;
+
+@font-face {
+  font-family: "ApercuBold";
+  src: local("MyFont"), url(./fonts/ApercuBold.ttf) format("truetype");
+}
+
+* {
+  margin: 0;
+  font-family: "ApercuBold";
+}
+
+h1 {
+  line-height: 1.25;
+  font-size: 3.5rem;
+}
+
+h2 {
+  line-height: 1.625;
+  font-size: 1.5rem;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: $color-purple;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-primary {
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: rgb(103, 9, 95);
+  color: white;
+  border: none;
+  height: 40px;
+  width: 150px;
+  &:hover {
+    background-color: white;
+    border: solid 2px rgb(103, 9, 95);
+    color: rgb(103, 9, 95);
+  }
+  &:focus {
+    outline: none;
+  }
+}

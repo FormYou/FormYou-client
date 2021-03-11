@@ -1,0 +1,22 @@
+@import "index.scss";
+
+.Formation {
+	width: 100%;
+	&__head {
+		background-color: $color-purple;
+		min-height: 300px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: white;
+		&__title {
+			margin: 25px 0 50px;
+		}
+	}
+	&__sessions {
+		&__title {
+			text-align: center;
+			margin: 25px 0 50px;
+		}
+	}
+}
