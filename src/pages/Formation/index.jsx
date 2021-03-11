@@ -42,7 +42,7 @@ const Formation = () => {
         <h2 className="Formation__head__description">{formation && formation.description}</h2>
         <p className="Formation__head__teacher">professeur: {formation && formation.user.name}</p>
       </div>
-      {user.role == 'admin' ? <CreateSession /> : ''}
+      {user.role == 'admin' ? formation && <CreateSession formation_id={formation.id} /> : ''}
       <div className="Formation__sessions">
         <h2 className="Formation__sessions__title">Sessions à venir</h2>
         {formation && <SessionList formation_id={formation.id} />}
