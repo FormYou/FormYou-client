@@ -16,11 +16,9 @@ const CreateSession = ({ formation_id }) => {
   	}, [])
 
   useEffect(()=> {
-    console.log(fullDate)
     setSession({
       ...session, date: `${fullDate.year}-${fullDate.month}-${fullDate.day}`
     })
-    console.log(session)
   },[fullDate])
 
 	const getRooms = () => {
