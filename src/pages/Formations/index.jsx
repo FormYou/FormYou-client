@@ -17,16 +17,17 @@ const Formations = () => {
   }, [])
 
 	const getFormations = () => {
-        fetch(`${api}formations`, {
-          method: 'get'
-        })
-        .then((response) => response.json())
-        .then((response) => {
-          setFormations(response);
-          setSelectCat("0");
-          setFilteredFormations(response)
-        })
-        .catch((error) => console.log(error));
+    fetch(`${api}formations`, {
+      method: 'get'
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      setFormations(response);
+      setSelectCat("0");
+      setFilteredFormations(response)
+    })
+    .catch((error) => console.log(error));
   }
 
   const handleCategory = (e) => {

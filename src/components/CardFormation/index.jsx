@@ -8,8 +8,8 @@ const CardFormation = ({ formation }) => {
   return (
   	<Link to={user.role !== undefined ? `/formation/${formation.id}` : "/"}>
       <div className="CardFormation">
-        <h2 className="CardFormation__title">{formation.title}</h2>
-        {formation.categories.map((category) => (
+        <h2 className="CardFormation__title">{formation && formation.title}</h2>
+        {formation && formation.categories.map((category) => (
           <p key={category.id} className="CardFormation__category">{category.name}</p>
         ))}
       </div>

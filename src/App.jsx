@@ -1,18 +1,19 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './index.scss';
 
-import Navbar from 'components/Navbar/Navbar';
-import Home from 'pages/Home/Home';
-import SignIn from 'pages/SignIn/SignIn';
-import SignUp from 'pages/SignUp/SignUp';
+import Navbar from 'components/Navbar';
+import Home from 'pages/Home';
+import SignIn from 'pages/SignIn';
+import SignUp from 'pages/SignUp';
 import Formations from 'pages/Formations';
 import Formation from 'pages/Formation';
 import Users from 'pages/Users';
-import NoMatch from 'pages/NoMatch/NoMatch';
 import AddCategory from 'pages/AddCategory';
-import Sessions from 'pages/Session/Session'
-import Room from 'pages/Room/index'
+import Sessions from 'pages/Session/Session';
+import Profile from 'pages/Profile';
+import NoMatch from 'pages/NoMatch';
+import Room from 'pages/Room';
 
 const App = () => {
 
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/formations" exact component={Formations} />
           <PrivateRoute exact path="/formation/:id" component={Formation} />
           <PrivateAdminRoute path="/users" component={Users} />
+          <PrivateRoute path="/profile" component={Profile} />
           <PrivateAdminRoute path="/category" component={AddCategory} />
           <PrivateAdminRoute path="/room" component={Room} />
           <PrivateRoute path='/calendar' component={Sessions} />
