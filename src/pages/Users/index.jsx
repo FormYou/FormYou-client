@@ -7,7 +7,7 @@ import AllUsers from 'components/AllUsers';
 import DeleteUser from 'components/DeleteUser';
 
 const Users = () => {
-  const user = useSelector(state => state);
+  const user = useSelector(state => state.token);
   const [notCheckedUsers, setNotCheckedUsers] = useState('');
 
   const notChecked = () => {
