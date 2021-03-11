@@ -25,7 +25,6 @@ const CreateFormation = ({ getFormations }) => {
 	    .then((response) => response.json())
 	    .then((response) => {
 	      setTeachers(response)
-        console.log(response)
         setFormation({...formation, user_id: response[0].id})
 	    })
 	    .catch((error) => console.log(error));
