@@ -41,13 +41,11 @@ const App = () => {
         <Navbar />
         <main>
             <Switch>
-              <div className="main">
                 <Route path="/" exact component={Home} />
                 <Route path="/signin" exact component={SignIn} />
                 <Route path="/signup" exact component={SignUp} />
                 <Route path="/formations" exact component={Formations} />
                 <PrivateAdminRoute path="/users" component={Users} />
-              </div>
               <PrivateRoute path='/session' component={Sessions} />
               <Route component={NoMatch} />
             </Switch>

@@ -5,7 +5,7 @@ import './index.scss';
 import ValideUser from 'components/ValideUser';
 
 const Users = () => {
-  const user = useSelector(state => state);
+  const user = useSelector(state => state.token);
   const [notCheckedUsers, setNotCheckedUsers] = useState('');
 
   const notChecked = () => {
