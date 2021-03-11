@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 const SessionList = ({ formation_id }) => {
 	const [allSessions, setAllSessions] = useState();
-  const [pastSessions, setPastSessions] = useState();
   const [futureSessions, setFutureSessions] = useState();
   const token = useSelector((state) => state.token);
 
@@ -15,7 +14,6 @@ const SessionList = ({ formation_id }) => {
   }, [])
 
   useEffect(() => {
-    allSessions && getPast()
     allSessions && getFuture()
   }, [allSessions])
 
@@ -34,37 +32,21 @@ const SessionList = ({ formation_id }) => {
     .catch((error) => console.log(error));
 	}
 
-  const getPast = () => {
-    setPastSessions(allSessions.filter(answer => new Date(answer.date).getTime() - Date.now() < 0))
-  }
-
   const getFuture = () => {
     setFutureSessions(allSessions.filter(answer => new Date(answer.date).getTime() - Date.now() > 0))
   }
 
+  const getFormatedDate = (session) => {
+    const months = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+    return `${session.date.substring(8, 10)} ${months[parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`
+  }
+
   return (
     <div>
-    <p>all sessions:</p>
-    <ul className="SessionList">
-      {allSessions && allSessions.map((session) => (
-        <Link to={`/sessions/${session.id}`} key={session.id}>
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
-        </Link>
-      ))}
-    </ul>
-    <p>past sessions:</p>
-    <ul className="SessionList">
-      {pastSessions && pastSessions.map((session) => (
-        <Link to="/" key={session.id}>
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
-        </Link>
-      ))}
-    </ul>
-    <p>future sessions:</p>
     <ul className="SessionList">
       {futureSessions && futureSessions.map((session) => (
-        <Link to={`/sessions/${session.id}`}>
-          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
+        <Link to={`/sessions/${session.id}`} key={session.id}>
+          <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
     </ul>
