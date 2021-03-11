@@ -34,6 +34,7 @@ const Navbar = () => {
             <>
               <Link to="/users">Validations utilisateurs</Link>
               <Link to="/category">Ajouter categorie</Link>
+              <Link to="/room">Ajouter une salle</Link>
             </>
           )}
         </div>
