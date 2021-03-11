@@ -4,29 +4,32 @@ import { api } from 'data/api';
 import { Link } from 'react-router-dom';
 
 const SessionList = ({ formation_id }) => {
-	const [sessions, setSessions] = useState();
+	const [allSessions, setAllSessions] = useState();
 
   useEffect(() => {
       getSessions()
   }, [])
 
 	const getSessions = () => {
-        fetch(`${api}/formations/${formation_id}/sessions`, {
-          method: 'get'
-        })
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response)
-          setSessions(response)
-        })
-        .catch((error) => console.log(error));
-  	}
+    fetch(`${api}/formations/${formation_id}/sessions`, {
+      method: 'get'
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      setAllSessions(response.filter(answer => answer.formation_id == formation_id))
+    })
+    .catch((error) => console.log(error));
+	}
+
+  const formatDate = (dateString) => {
+    return dateString.match
+  } 
 
   return (
     <ul className="SessionList">
-      {sessions &&  sessions.map((session) => (
+      {allSessions && allSessions.map((session) => (
         <Link to="/">
-          <li className="SessionList__item">{session.date}</li>
+          <li className="SessionList__item">{`${session.date.substring(8, 10)} ${["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre",][parseInt(session.date.substring(5, 7) - 1, 10)]} ${session.date.substring(0, 4)}`}</li>
         </Link>
       ))}
     </ul>
