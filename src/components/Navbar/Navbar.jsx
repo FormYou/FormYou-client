@@ -42,6 +42,11 @@ const Navbar = () => {
           <p className="Navbar__right__formations">Nos Formations</p>
         </Link>
         {user.token && (
+          <Link to="/session">
+            <p >Les sessions</p>
+          </Link>
+        )}
+        {user.token && (
           <>
             <p>{user.name}</p>
             <button type="button" onClick={logout}>Se deconnecter</button>
@@ -50,6 +55,7 @@ const Navbar = () => {
         {!user.token && (
           <Link to="/signin">Connexion</Link>
         )}
+        
       </div>
     </nav>
   );
