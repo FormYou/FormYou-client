@@ -33,7 +33,8 @@ const SignUp = () => {
           dispatch(setUser(response.data.attributes.name, 
             response.data.attributes.role, 
             response.data.attributes.checked,
-            userToken));
+            userToken,
+            response.data.id));
           history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));

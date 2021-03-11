@@ -11,6 +11,7 @@ import Formation from 'pages/Formation';
 import Users from 'pages/Users';
 import NoMatch from 'pages/NoMatch/NoMatch';
 import AddCategory from 'pages/AddCategory';
+import Inscription from 'pages/Inscription';
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/signup" exact component={SignUp} />
           <Route path="/formations" exact component={Formations} />
           <PrivateRoute exact path="/formation/:id" component={Formation} />
+          <PrivateRoute exact path="/sessions/:sessionId" component={Inscription} />
           <PrivateAdminRoute path="/users" component={Users} />
           <PrivateAdminRoute path="/category" component={AddCategory} />
           <Route component={NoMatch} />
