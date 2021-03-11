@@ -1,6 +1,7 @@
 import './Profile.scss';
 import { useSelector } from 'react-redux';
 import SessionList from 'components/SessionList';
+import TeacherInfo from 'components/Teacher';
 
 const Profile = () => {
 	const user = useSelector(state => state);
@@ -16,6 +17,9 @@ const Profile = () => {
         </div>
         <div className="Profile__sessions">
         	<h2>Sessions passées</h2>
+        </div>
+        <div className="Profile__sessions">
+          {user.role == 'teacher' && <TeacherInfo />}
         </div>
     </div>
   );
