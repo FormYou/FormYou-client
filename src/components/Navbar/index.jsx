@@ -42,6 +42,11 @@ const Navbar = () => {
           <p className="Navbar__right__formations">Nos Formations</p>
         </Link>
         {user.token && (
+          <Link to="/calendar">
+            <p >Les sessions</p>
+          </Link>
+        )}
+        {user.token && (
           <>
             <Link to="/profile">
               <p>{user.name}</p>
@@ -52,6 +57,7 @@ const Navbar = () => {
         {!user.token && (
           <Link to="/signin">Connexion</Link>
         )}
+        
       </div>
     </nav>
   );
