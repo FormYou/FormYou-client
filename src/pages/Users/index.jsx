@@ -4,6 +4,7 @@ import { api } from 'data/api.json';
 import './index.scss';
 import ValideUser from 'components/ValideUser';
 import AllUsers from 'components/AllUsers';
+import DeleteUser from 'components/DeleteUser';
 
 const Users = () => {
   const user = useSelector(state => state);
@@ -36,6 +37,7 @@ const Users = () => {
             <p><span>Email : </span> {user.email}</p>
             <p><span>Role : </span> {user.role}</p>
             <ValideUser id={user.id} notChecked={notChecked} />
+            <DeleteUser id={user.id} allUsers={notChecked} />
           </li>
         ))}
       </ul>

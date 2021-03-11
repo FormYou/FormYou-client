@@ -30,8 +30,10 @@ const SignUp = () => {
           return response.json()
         })
         .then((response) => {
-          dispatch(setUser(response.data.attributes.name, response.data.attributes.role, userToken));
-          console.log(Cookies.get('userName'))
+          dispatch(setUser(response.data.attributes.name, 
+            response.data.attributes.role, 
+            response.data.attributes.checked,
+            userToken));
           history.push("/");
         })
         .catch((error) => setDisplayError('Mauvais identifiant / password'));
