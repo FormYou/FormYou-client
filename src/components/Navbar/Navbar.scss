@@ -6,6 +6,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  &__left {
+    display: flex;
+    align-items: center;
+    a {
+      margin-right: 20px;
+    }
+  }
   &__right {
     display: flex;
     p {

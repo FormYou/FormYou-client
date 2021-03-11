@@ -10,9 +10,11 @@ import Formations from 'pages/Formations';
 import Formation from 'pages/Formation';
 import Users from 'pages/Users';
 import AddCategory from 'pages/AddCategory';
+import Inscription from 'pages/Inscription';
 import Sessions from 'pages/Session/Session';
 import Profile from 'pages/Profile';
 import NoMatch from 'pages/NoMatch';
+import Room from 'pages/Room';
 
 const App = () => {
 
@@ -49,9 +51,11 @@ const App = () => {
           <Route path="/signup" exact component={SignUp} />
           <Route path="/formations" exact component={Formations} />
           <PrivateRoute exact path="/formation/:id" component={Formation} />
+          <PrivateRoute exact path="/sessions/:sessionId" component={Inscription} />
           <PrivateAdminRoute path="/users" component={Users} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateAdminRoute path="/category" component={AddCategory} />
+          <PrivateAdminRoute path="/room" component={Room} />
           <PrivateRoute path='/calendar' component={Sessions} />
           <Route component={NoMatch} />
         </Switch>

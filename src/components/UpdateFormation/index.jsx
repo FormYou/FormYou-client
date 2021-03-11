@@ -71,7 +71,7 @@ const UpdateFormation = ({ getFormation, title, description, teacher }) => {
           <select className="UpdateFormation__form__select" name="user_id" onChange={handleChange}>
               <option value={teacher.id}>{teacher.name}</option>
             {teachers && teachers.map((teacher)=> (
-              <option value={teacher.id} >{teacher.name}</option>
+              <option key={teacher.id} value={teacher.id} >{teacher.name}</option>
             ))}
           </select>
           <input className="UpdateFormation__form__name" name="title" value={formation.title} onChange={handleChange}/>

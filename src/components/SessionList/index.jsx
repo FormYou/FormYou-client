@@ -2,11 +2,13 @@ import './SessionList.scss';
 import React, { useState, useEffect } from "react";
 import { api } from 'data/api';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const SessionList = ({ formation_id }) => {
 	const [allSessions, setAllSessions] = useState();
   const [pastSessions, setPastSessions] = useState();
   const [futureSessions, setFutureSessions] = useState();
+  const token = useSelector((state) => state.token);
 
   useEffect(() => {
       getSessions()
@@ -19,7 +21,11 @@ const SessionList = ({ formation_id }) => {
 
 	const getSessions = () => {
     fetch(`${api}/formations/${formation_id}/sessions`, {
-      method: 'get'
+      method: 'get',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+      },
     })
     .then((response) => response.json())
     .then((response) => {
@@ -46,7 +52,7 @@ const SessionList = ({ formation_id }) => {
     <p>all sessions:</p>
     <ul className="SessionList">
       {allSessions && allSessions.map((session) => (
-        <Link to="/">
+        <Link to={`/sessions/${session.id}`} key={session.id}>
           <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
@@ -54,7 +60,7 @@ const SessionList = ({ formation_id }) => {
     <p>past sessions:</p>
     <ul className="SessionList">
       {pastSessions && pastSessions.map((session) => (
-        <Link to="/">
+        <Link to={`/sessions/${session.id}`} key={session.id}>
           <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
@@ -62,7 +68,7 @@ const SessionList = ({ formation_id }) => {
     <p>future sessions:</p>
     <ul className="SessionList">
       {futureSessions && futureSessions.map((session) => (
-        <Link to="/">
+        <Link to={`/sessions/${session.id}`} key={session.id}>
           <li className="SessionList__item">{getFormatedDate(session)}</li>
         </Link>
       ))}
