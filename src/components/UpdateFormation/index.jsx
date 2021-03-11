@@ -47,12 +47,11 @@ const UpdateFormation = ({ getFormation, title, description, teacher }) => {
 
   const deleteFormation = () => {
       fetch(`${api}formations/${id}`, {
-          method: 'destroy',
+          method: 'delete',
           headers: {
             'Authorization': user.token,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formation)
+            'Content-Type': 'application/json'
+          }
         })
       .then((response) => history.push("/formations"))
       .catch((error) => console.log(error));
