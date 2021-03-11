@@ -1,4 +1,5 @@
-$color-bg: #a8a8a8;
+$color-grey: #a8a8a8;
+$color-purple: #5743BE;
 
 @font-face {
   font-family: "ApercuBold";
@@ -23,6 +24,7 @@ h2 {
 a:link,
 a:visited {
   text-decoration: none;
+  color: $color-purple;
 }
 
 main {

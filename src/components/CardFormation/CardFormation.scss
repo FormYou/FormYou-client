@@ -1,0 +1,18 @@
+@import "index.scss";
+
+.CardFormation {
+	width: 200px;
+	height: 200px;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 20px;
+	margin: 20px;
+	background-color: $color-grey;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease-in-out;
+}
+
+.CardFormation:hover {
+	box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	transform: translateY(-7px);
+}
