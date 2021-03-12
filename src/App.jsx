@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './index.scss';
-
+import Footer from 'components/Footer'
 import Navbar from 'components/Navbar';
 import Home from 'pages/Home';
 import SignIn from 'pages/SignIn';
@@ -60,6 +60,7 @@ const App = () => {
           <Route component={NoMatch} />
         </Switch>
       </main>
+      <Footer />
     </Router>
   );
 }

@@ -22,7 +22,6 @@ const Formations = () => {
     })
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
       setFormations(response);
       setSelectCat("0");
       setFilteredFormations(response)
