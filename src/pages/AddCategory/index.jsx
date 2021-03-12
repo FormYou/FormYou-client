@@ -41,7 +41,7 @@ const AddCategory = () => {
   }
 
   return (
-    <div>
+    <div className="AddCategory">
       <form className="CreateCategory__form" onSubmit={createCategory}>
           <input className="CreateCategory__form__name" name="title" value={form.title}placeholder="titre" onChange={(e) => setForm(e.target.value)}/>
           <button type="submit">Ajouter</button>

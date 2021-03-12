@@ -71,7 +71,7 @@ const Inscription = () => {
   }
 
   return (
-    <div>
+    <div className='Inscription'>
       {session && (
         <>
           <h2>Session pour {session.formation.title}</h2>
