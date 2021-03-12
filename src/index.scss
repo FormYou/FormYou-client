@@ -1,11 +1,13 @@
 $color-grey: #a8a8a8;
-$color-purple: #5743BE;
+$color-purple: #5743be;
 
 @font-face {
   font-family: "ApercuBold";
   src: local("MyFont"), url(./fonts/ApercuBold.ttf) format("truetype");
 }
-
+li {
+  list-style: none;
+}
 * {
   margin: 0;
   font-family: "ApercuBold";
@@ -49,4 +51,6 @@ a:visited {
   &:focus {
     outline: none;
   }
+}
+.footer {
 }
