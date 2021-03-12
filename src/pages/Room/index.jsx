@@ -53,7 +53,7 @@ const Room = () => {
   }, [])
 
   return (
-    <div>
+    <div className='Room'>
       <form className="CreateCategory__form" onSubmit={createRoom}>
           <input className="CreateCategory__form__name" name="roomNumber" placeholder="Room number" onChange={(e) => setRoomNumber(e.target.value)}/>
           <button type="submit">Ajouter</button>
