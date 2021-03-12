@@ -30,7 +30,7 @@ const TeacherInfo = () => {
 
     return (
         <div>
-           <ul className="Formations__list">
+           <ul className="FormationsT__list">
                <h2>Les formations qui vont sont assignées</h2>
           {teacherInfo && teacherInfo.formations.map((formation) => (
             <li className="Formations__list__item" key={formation.id}>
